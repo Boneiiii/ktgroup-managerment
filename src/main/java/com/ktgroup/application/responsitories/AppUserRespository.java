@@ -6,7 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.ktgroup.application.entities.AppUser;
 
 @Repository
-public interface AppUserRespository extends JpaRepository<AppUser, Long>{
+public interface AppUserRespository extends JpaRepository<AppUser, Long> {
 
-	public AppUser findByUserName(String userName);
+    public AppUser findByUserName(String userName);
+
+    Boolean existsByEmail(String email);
+
+    Boolean existsByUserName(String userName);
 }

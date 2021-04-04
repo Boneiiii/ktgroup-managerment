@@ -2317,10 +2317,6 @@ pre code {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-.table-responsive>.table-bordered {
-  border: 0;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -16854,7 +16850,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-  padding: 12px 8px;
+  padding: 5px 10px;
   vertical-align: middle;
   border-color: #ddd;
 }
@@ -17718,10 +17714,6 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 
 .card .card-header {
   z-index: 3 !important;
-}
-
-.card .card-header .card-title {
-  margin-bottom: 3px;
 }
 
 .card .card-header .card-category {

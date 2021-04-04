@@ -3,6 +3,8 @@
  */
 package com.ktgroup.application.entities;
 
+import java.util.Date;
+
 /**
  * @author tamdu
  *
@@ -10,60 +12,61 @@ package com.ktgroup.application.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
-@Table(name = "App_User", //
-		uniqueConstraints = { //
-				@UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
+@Table(name = "App_User", uniqueConstraints = { @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
+@Getter
+@Setter
 public class AppUser {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "User_Id", nullable = false)
-	private Long userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private Long id;
 
-	@Column(name = "User_Name", length = 36, nullable = false)
-	private String userName;
+    @Column(name = "User_Name", length = 36, nullable = false)
+    private String userName;
 
-	@Column(name = "Encryted_Password", length = 128, nullable = false)
-	private String encrytedPassword;
+    @Column(name = "Encryted_Password", length = 128, nullable = false)
+    private String encrytedPassword;
 
-	@Column(name = "Enabled", length = 1, nullable = false)
-	private boolean enabled;
+    @Column
+    private String firstName;
 
-	public Long getUserId() {
-		return userId;
-	}
+    @Column
+    private String lastName;
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    @Column
+    private String gender;
 
-	public String getUserName() {
-		return userName;
-	}
+    @Column
+    private String email;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
-	public String getEncrytedPassword() {
-		return encrytedPassword;
-	}
+    @Column(columnDefinition = "boolean default false")
+    private boolean isDelete;
 
-	public void setEncrytedPassword(String encrytedPassword) {
-		this.encrytedPassword = encrytedPassword;
-	}
+    @Column
+    private String createAt;
 
-	public boolean isEnabled() {
-		return enabled;
-	}
+    @Column
+    private Date createDate;
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    @Column
+    private String updateAt;
 
+    @Column
+    private Date updateDate;
 }
